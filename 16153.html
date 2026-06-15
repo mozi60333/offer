@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADXJ Enterprise Offer - Veluna-iOS-TT</title>
+<style>
+:root {
+--bg: #f6f2ea;
+--paper: #fffaf0;
+--ink: #1d2430;
+--muted: #64707f;
+--line: #ded6c8;
+--accent: #0f766e;
+--accent-2: #db2777;
+--accent-3: #f59e0b;
+--dark: #111827;
+--soft: #e8f4f2;
+--danger: #b42318;
+--shadow: 0 18px 55px rgba(31, 41, 55, .12);
+--radius: 8px;
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; color: var(--ink); background: linear-gradient(135deg, rgba(15, 118, 110, .10), transparent 28%), linear-gradient(315deg, rgba(219, 39, 119, .10), transparent 32%), var(--bg); }
+button, input { font: inherit; }
+.shell { width: min(1440px, calc(100% - 40px)); margin: 0 auto; padding: 28px 0 40px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+.brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.mark { width: 88px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(15, 118, 110, .28); border-radius: 8px; background: linear-gradient(135deg, rgba(15, 118, 110, .94), rgba(17, 24, 39, .98)); color: #fff; font-weight: 900; letter-spacing: 0; box-shadow: 0 10px 30px rgba(15, 118, 110, .2); flex: 0 0 auto; position: relative; overflow: hidden; text-transform: uppercase; }
+.mark::after { content: ".com"; position: absolute; right: 8px; bottom: 6px; color: rgba(255, 255, 255, .66); font-size: 10px; font-weight: 800; }
+.brand-lockup { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.product-tag { display: inline-flex; align-items: center; gap: 8px; min-height: 30px; padding: 6px 10px; border: 1px solid rgba(15, 118, 110, .18); border-radius: 8px; background: rgba(232, 244, 242, .8); color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: 0; }
+.product-tag.dark { border-color: rgba(17, 24, 39, .12); background: #111827; color: #fff; }
+.product-tag::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 12px 0 0 var(--accent-3); }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(26px, 3vw, 42px); line-height: 1.06; letter-spacing: 0; }
+.subtitle { color: var(--muted); margin-top: 6px; font-size: 14px; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.btn { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; padding: 9px 13px; background: rgba(255, 250, 240, .88); color: var(--dark); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: transform .16s ease, border-color .16s ease, background .16s ease; white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); border-color: rgba(15, 118, 110, .35); background: #fff; }
+.btn.primary { border-color: transparent; background: var(--accent); color: #fff; }
+.grid { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 18px; align-items: start; }
+.panel { background: rgba(255, 250, 240, .94); border: 1px solid rgba(222, 214, 200, .9); border-radius: var(--radius); box-shadow: var(--shadow); }
+.sidebar { position: sticky; top: 22px; overflow: hidden; }
+.product-visual { min-height: 260px; background: linear-gradient(145deg, rgba(17, 24, 39, .98), rgba(15, 118, 110, .88)), linear-gradient(315deg, rgba(219, 39, 119, .22), transparent 42%); color: #fff; padding: 22px; display: flex; flex-direction: column; gap: 18px; }
+.visual-copy { min-width: 0; }
+.visual-copy .eyebrow { display: inline-flex; align-items: center; min-height: 24px; padding: 4px 8px; border: 1px solid rgba(255, 255, 255, .22); border-radius: 999px; font-size: 12px; color: rgba(255, 255, 255, .78); margin-bottom: 14px; }
+.visual-copy strong { display: block; font-size: 42px; line-height: 1; letter-spacing: 0; margin-bottom: 9px; }
+.visual-copy .domain { font-weight: 900; }
+.visual-copy span { color: rgba(255, 255, 255, .72); font-size: 13px; line-height: 1.6; }
+.offer-board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.board-item { min-height: 70px; border: 1px solid rgba(255, 255, 255, .16); border-radius: 8px; padding: 11px; background: rgba(255, 255, 255, .08); backdrop-filter: blur(10px); }
+.board-item.wide { grid-column: 1 / -1; min-height: 76px; background: rgba(255, 255, 255, .12); }
+.board-item span { display: block; color: rgba(255, 255, 255, .62); font-size: 11px; margin-bottom: 7px; }
+.board-item strong { display: block; color: #fff; font-size: 16px; line-height: 1.35; overflow-wrap: anywhere; }
+.board-item.wide strong { font-size: 14px; }
+.status-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(255, 255, 255, .14); padding-top: 14px; }
+.status-row span { color: rgba(255, 255, 255, .66); font-size: 12px; }
+.status-pill { display: inline-flex; align-items: center; min-height: 28px; padding: 5px 9px; border-radius: 999px; background: #ccfbf1; color: #115e59; font-size: 12px; font-weight: 800; white-space: nowrap; }
+.metric-list { padding: 18px; display: grid; gap: 10px; }
+.metric { border: 1px solid var(--line); border-radius: 8px; padding: 13px; background: rgba(255, 255, 255, .58); }
+.metric label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+.metric b { font-size: 18px; letter-spacing: 0; overflow-wrap: anywhere; }
+.content { display: grid; gap: 18px; }
+.section { padding: 20px; }
+.section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.section h2 { font-size: 18px; letter-spacing: 0; }
+.badge { display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 5px 9px; border-radius: 999px; background: var(--soft); color: var(--accent); font-size: 12px; font-weight: 700; white-space: nowrap; }
+.info-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.info { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: rgba(255, 255, 255, .55); min-height: 78px; }
+.info span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+.info strong { display: block; font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; }
+.info a, .person a { color: inherit; text-decoration: none; }
+.contact-link { display: inline-flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(15, 118, 110, .32); color: var(--accent); }
+.contact-link:hover { color: #0f5f59; border-bottom-color: currentColor; }
+.link-stack { display: grid; gap: 12px; }
+.link-box { border: 1px solid var(--line); border-radius: 8px; background: #171c26; color: #e5edf5; overflow: hidden; }
+.link-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255, .1); color: #fff; font-size: 13px; font-weight: 700; }
+.copy { border: 1px solid rgba(255, 255, 255, .16); background: rgba(255, 255, 255, .08); color: #fff; border-radius: 8px; padding: 6px 9px; cursor: pointer; font-size: 12px; white-space: nowrap; }
+.link-box code { display: block; padding: 14px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 12px; line-height: 1.65; color: #dbeafe; overflow-wrap: anywhere; word-break: break-word; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.price-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.price { border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: #fff; min-height: 110px; }
+.price span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+.price strong { font-size: 26px; letter-spacing: 0; }
+.price small { display: block; color: var(--muted); margin-top: 8px; }
+.permissions, .notes { display: grid; gap: 10px; }
+.person, .note { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; border: 1px solid var(--line); border-radius: 8px; padding: 11px 12px; background: rgba(255, 255, 255, .58); }
+.person span, .note span { color: var(--muted); font-size: 12px; line-height: 1.45; }
+.person strong, .note strong { display: block; margin-bottom: 4px; overflow-wrap: anywhere; }
+.role { flex: 0 0 auto; border-radius: 999px; padding: 4px 8px; font-size: 12px; font-weight: 700; background: #eef2ff; color: #4338ca; }
+.role.admin { background: #fff7ed; color: #c2410c; }
+.naming { display: grid; gap: 12px; }
+.formula { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid rgba(15, 118, 110, .18); border-radius: 8px; padding: 13px; background: var(--soft); }
+.formula code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; overflow-wrap: anywhere; line-height: 1.5; }
+.field-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.field { border: 1px solid var(--line); border-radius: 8px; padding: 11px; background: rgba(255, 255, 255, .58); }
+.field span { color: var(--muted); font-size: 12px; display: block; margin-bottom: 5px; }
+.field strong { font-size: 14px; }
+.account-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.account { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: rgba(255, 255, 255, .58); min-height: 96px; }
+.account span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 7px; }
+.account strong, .account code { display: block; color: var(--ink); font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+.account code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+.placeholder { color: #9a3412; }
+.warning { border-color: rgba(180, 35, 24, .22); background: #fff6f4; }
+.warning .badge { background: #fee4e2; color: var(--danger); }
+.toast { position: fixed; right: 20px; bottom: 20px; background: #111827; color: #fff; border-radius: 8px; padding: 11px 14px; box-shadow: 0 18px 50px rgba(0, 0, 0, .22); transform: translateY(20px); opacity: 0; pointer-events: none; transition: opacity .18s ease, transform .18s ease; font-size: 14px; }
+.toast.show { opacity: 1; transform: translateY(0); }
+@media (max-width: 1060px) { .grid, .split { grid-template-columns: 1fr; } .sidebar { position: static; } .info-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .shell { width: min(100% - 24px, 680px); padding-top: 18px; } .topbar, .section-head, .formula { align-items: stretch; flex-direction: column; } .actions { justify-content: stretch; } .btn, .copy { justify-content: center; } .product-visual, .info-grid, .price-grid, .field-grid, .account-grid { grid-template-columns: 1fr; } .product-visual { min-height: unset; } }
+@media print { body { background: #fff; } .shell { width: 100%; padding: 0; } .actions, .copy, .toast { display: none; } .panel { box-shadow: none; break-inside: avoid; } .sidebar { position: static; } }
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="topbar"><div class="brand"><div class="mark" aria-label="adxj.com logo">ADXJ</div><div><h1>ADXJ Enterprise Offer</h1><p class="subtitle">adxj.com · Veluna-iOS-TT · masonrya.com · TikTok · US</p><div class="brand-lockup" aria-label="企业标识"><span class="product-tag dark">adxj.com</span><span class="product-tag">企业 Offer</span><span class="product-tag">投放产品：Veluna</span></div></div></div><div class="actions"><button class="btn" type="button" onclick="window.print()">打印 / 导出 PDF</button><button class="btn primary" type="button" data-copy="summary">复制摘要</button></div></header>
+<div class="grid"><aside class="panel sidebar" aria-label="Offer 概览"><div class="product-visual"><div class="visual-copy"><div class="eyebrow">ADXJ Enterprise Offer</div><strong class="domain">adxj.com</strong><span>企业 Offer 档案 · Veluna iOS TikTok CPA 投放</span></div><div class="offer-board" aria-label="Offer 摘要看板"><div class="board-item"><span>渠道 ID</span><strong>16153</strong></div><div class="board-item"><span>平台 / 国家</span><strong>TikTok · US</strong></div><div class="board-item"><span>设备系统</span><strong>iPhone · iOS 15.6+</strong></div><div class="board-item"><span>价格阶梯</span><strong>30 / 35 / 40 USD</strong></div><div class="board-item wide"><span>渠道商群组</span><strong>渠道：16153 - 财神在线 - Veluna - iOS - CPA</strong></div></div><div class="status-row"><span>Offer Status</span><strong class="status-pill">Ready for Media Buying</strong></div></div><div class="metric-list"><div class="metric"><label>Offer</label><b>Veluna-iOS-TT</b></div><div class="metric"><label>企业标识</label><b>adxj.com</b></div><div class="metric"><label>包名 / 域名</label><b>masonrya</b></div><div class="metric"><label>投放产品</label><b>Veluna</b></div><div class="metric"><label>所属 BC</label><b>mozi-bluewhal</b></div><div class="metric"><label>广告账户授权 BC</label><b>7643078218777460737</b></div></div></aside>
+<section class="content"><article class="panel section"><div class="section-head"><h2>基础投放信息</h2><span class="badge">TikTok Placement</span></div><div class="info-grid"><div class="info"><span>企业 Offer</span><strong>adxj.com</strong></div><div class="info"><span>投放产品</span><strong>Veluna</strong></div><div class="info"><span>投放平台</span><strong>TikTok</strong></div><div class="info"><span>投放国家</span><strong>美国</strong></div><div class="info"><span>投放年龄</span><strong>18-65+</strong></div><div class="info"><span>投放设备</span><strong>iPhone</strong></div><div class="info"><span>投放系统</span><strong>iOS 15.6 及以上</strong></div><div class="info"><span>渠道 ID</span><strong>16153</strong></div><div class="info"><span>群组名称</span><strong>渠道：16153 - 财神在线 - Veluna - iOS - CPA</strong></div><div class="info"><span>Tracker Limit</span><strong>250000</strong></div><div class="info"><span>External Tracker IDs</span><strong>1</strong></div></div></article>
+<article class="panel section"><div class="section-head"><h2>渠道与群组</h2><span class="badge">Channel</span></div><div class="info-grid"><div class="info"><span>渠道 ID</span><strong>16153</strong></div><div class="info"><span>群组名称</span><strong>渠道：16153 - 财神在线 - Veluna - iOS - CPA</strong></div><div class="info"><span>渠道商联系人 / 群组管理人</span><strong><a class="contact-link" href="https://t.me/wkdt888" target="_blank" rel="noopener noreferrer">@wkdt888</a></strong></div><div class="info"><span>企业标识</span><strong>adxj.com</strong></div></div></article>
+<article class="panel section"><div class="section-head"><h2>链接信息</h2><span class="badge">Macros Reserved</span></div><div class="link-stack"><div class="link-box"><div class="link-title"><span>原链接</span><button class="copy" type="button" data-copy="original">复制</button></div><code id="original-link">https://s2s.adjust.com/218vk1gn?campaign=__CAMPAIGN_NAME__%20(__CAMPAIGN_ID__)&amp;adgroup=__AID_NAME__%20(__AID__)&amp;creative=__CID_NAME__%20(__CID__)&amp;ttclid=__callback_param__&amp;adgroup_id=__AID__&amp;ip_address=__IP__&amp;user_agent=__UA__&amp;campaign_id=__CAMPAIGN_ID__&amp;creative_id=__CID__&amp;tracker_limit=250000&amp;tiktok_placement=__PLACEMENT__&amp;external_tracker_ids=1</code></div><div class="link-box"><div class="link-title"><span>投放链接</span><button class="copy" type="button" data-copy="tracking">复制</button></div><code id="tracking-link">https://www.masonrya.com/lancer.php?campaign=__CAMPAIGN_NAME__%20(__CAMPAIGN_ID__)&amp;adgroup=__AID_NAME__%20(__AID__)&amp;creative=__CID_NAME__%20(__CID__)&amp;ttclid=__callback_param__&amp;adgroup_id=__AID__&amp;ip_address=__IP__&amp;user_agent=__UA__&amp;campaign_id=__CAMPAIGN_ID__&amp;creative_id=__CID__&amp;tracker_limit=250000&amp;tiktok_placement=__PLACEMENT__&amp;external_tracker_ids=1</code></div></div></article>
+<div class="split"><article class="panel section"><div class="section-head"><h2>价格阶梯</h2><span class="badge">CPA</span></div><div class="price-grid"><div class="price"><span>100 CPA</span><strong>30</strong><small>USD</small></div><div class="price"><span>500 CPA</span><strong>35</strong><small>USD</small></div><div class="price"><span>1000 CPA</span><strong>40</strong><small>USD</small></div></div></article><article class="panel section"><div class="section-head"><h2>联系方式</h2><span class="badge">Business</span></div><div class="permissions"><div class="person"><div><strong>M7HHHH</strong><span>WeChat</span></div><span class="role">业务</span></div><div class="person"><div><strong><a class="contact-link" href="https://t.me/M7HHHH" target="_blank" rel="noopener noreferrer">@M7HHHH</a></strong><span>Telegram</span></div><span class="role">业务</span></div><div class="person"><div><strong><a class="contact-link" href="https://t.me/BCAD9988" target="_blank" rel="noopener noreferrer">@BCAD9988</a></strong><span>Telegram</span></div><span class="role">业务</span></div><div class="person"><div><strong><a class="contact-link" href="https://t.me/wkdt888" target="_blank" rel="noopener noreferrer">@wkdt888</a></strong><span>渠道商联系人 · Telegram</span></div><span class="role admin">渠道商</span></div></div></article></div>
+<article class="panel section"><div class="section-head"><h2>渠道商收款方式</h2><span class="badge">Payment</span></div><div class="account-grid"><div class="account"><span>USDT-TRC20</span><code id="trc20-address" class="placeholder">待提供</code></div><div class="account"><span>全球收款账户 USD</span><strong class="placeholder">待提供</strong></div><div class="account"><span>账户名称 / Beneficiary Name</span><strong class="placeholder">待提供</strong></div><div class="account"><span>银行名称 / Bank Name</span><strong class="placeholder">待提供</strong></div><div class="account"><span>账号 / Account No.</span><strong class="placeholder">待提供</strong></div><div class="account"><span>SWIFT / Routing / 其他信息</span><strong class="placeholder">待提供</strong></div></div></article>
+<article class="panel section"><div class="section-head"><h2>广告命名规范</h2><span class="badge">Naming Rule</span></div><div class="naming"><div class="formula"><code id="naming-rule">优化师英文名_lj_包名_fb_国家_日期_自定义</code><button class="btn" type="button" data-copy="naming">复制命名</button></div><div class="formula"><code id="naming-example">Alex_lj_masonrya_fb_US_0615_test01</code><button class="btn" type="button" data-copy="example">复制示例</button></div><div class="field-grid"><div class="field"><span>包名</span><strong>masonrya</strong></div><div class="field"><span>国家</span><strong>US</strong></div><div class="field"><span>日期格式</span><strong>MMDD</strong></div><div class="field"><span>固定字段</span><strong>lj</strong></div><div class="field"><span>固定字段</span><strong>fb</strong></div><div class="field"><span>自定义</span><strong>素材 / 策略 / 批次</strong></div></div></div></article>
+<div class="split"><article class="panel section"><div class="section-head"><h2>BC 授权权限</h2><span class="badge">Access</span></div><div class="permissions"><div class="person"><div><strong>guanshan@do-global.com</strong><span>分析师权限 · 查看权限</span></div><span class="role">分析师</span></div><div class="person"><div><strong>liuxinyi@do-global.com</strong><span>分析师权限 · 查看权限</span></div><span class="role">分析师</span></div><div class="person"><div><strong>542513826@qq.com</strong><span>分析师权限 · 查看权限</span></div><span class="role">分析师</span></div><div class="person"><div><strong>mozi5349927@gmail.com</strong><span>管理员权限</span></div><span class="role admin">管理员</span></div></div></article><article class="panel section warning"><div class="section-head"><h2>素材要求</h2><span class="badge">Compliance</span></div><div class="notes"><div class="note"><div><strong>禁止纯色情或露骨素材</strong><span>避免明显违反 TikTok 平台政策的画面和文案。</span></div></div><div class="note"><div><strong>以 App 引导为主</strong><span>素材重点放在产品展示、用户路径和下载引导。</span></div></div><div class="note"><div><strong>成人向风格需控尺度</strong><span>可做暧昧或轻度擦边风格，但需避免强诱导、裸露和低俗表达。</span></div></div><div class="note"><div><strong>上线前建议合规检查</strong><span>降低账户、广告和落地页审核风险。</span></div></div></div></article></div></section></div></main>
+<div class="toast" id="toast" role="status" aria-live="polite">已复制</div>
+<script>
+const values = { original: document.getElementById("original-link").textContent, tracking: document.getElementById("tracking-link").textContent, naming: document.getElementById("naming-rule").textContent, example: document.getElementById("naming-example").textContent, summary: ["ADXJ Enterprise Offer - Veluna-iOS-TT", "域名/包名：masonrya.com / masonrya", "企业标识：adxj.com", "投放产品：Veluna", "平台/国家/设备：TikTok / 美国 / iPhone", "系统：iOS 15.6+", "渠道 ID：16153", "群组名称：渠道：16153 - 财神在线 - Veluna - iOS - CPA", "渠道商联系人 / 群组管理人：@wkdt888", "BC：mozi-bluewhal", "授权 BC：7643078218777460737", "价格：100CPA 30USD；500CPA 35USD；1000CPA 40USD", "业务联系人：WeChat M7HHHH；Telegram @M7HHHH / @BCAD9988", "渠道商联系人 Telegram：@wkdt888", "USDT-TRC20：待提供", "全球收款账户 USD：待提供"].join("\n") };
+const toast = document.getElementById("toast"); let toastTimer;
+function showToast(message) { toast.textContent = message; toast.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 1600); }
+async function copyText(text) { try { await navigator.clipboard.writeText(text); showToast("已复制到剪贴板"); } catch (error) { const input = document.createElement("textarea"); input.value = text; input.setAttribute("readonly", ""); input.style.position = "fixed"; input.style.left = "-9999px"; document.body.appendChild(input); input.select(); document.execCommand("copy"); input.remove(); showToast("已复制到剪贴板"); } }
+document.querySelectorAll("[data-copy]").forEach((button) => { button.addEventListener("click", () => { copyText(values[button.dataset.copy]); }); });
+</script>
+</body>
+</html>
